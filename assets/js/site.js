@@ -47,8 +47,9 @@
 
     if (open) {
       window.setTimeout(() => {
-        if (isMenuOpen() && !getMenuFocusable().includes(document.activeElement)) {
-          toggle.focus({ preventScroll: true });
+        const firstMenuLink = sideMenu.querySelector('.side-menu__nav a[href]');
+        if (isMenuOpen() && firstMenuLink && !sideMenu.contains(document.activeElement)) {
+          firstMenuLink.focus({ preventScroll: true });
         }
       }, reducedMotion ? 0 : 60);
       return;
